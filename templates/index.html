@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalDeck</title>
+    <link rel="icon" href="https://i.imgur.com/OiRp8HT.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/OiRp8HT.png" type="image/png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-startup-image" href="https://i.imgur.com/0Hv66zS.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        body { overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Arial', sans-serif; }
+        .header { position: absolute; top: 10px; right: 10px; font-size: 18px; color: #3498db; cursor: pointer; text-decoration: none; }
+        .button-container { display: flex; justify-content: space-between; width: 100%; }
+        .button { user-select: none; height: 120px; width: 120px; padding: 10px; background-color: #3498db; color: black; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); margin: 0 5px; font-size: 16px; margin-bottom: 10px; }
+        @media screen and (max-width: 768px) and (orientation: portrait) { .outer-container { display: flex; justify-content: space-between; } .button-container { flex-direction: column; align-items: center; margin: 0 10px; } .button { height: 120px; width: 120px; } }
+        @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) { .outer-container { display: flex; justify-content: space-between; } .button-container { flex-direction: column; align-items: center; margin: 0 15px; } .button { height: 180px; width: 180px; font-size: 24px; margin-bottom: 15px; } }
+        @media screen and (min-width: 1024px) and (max-width: 1920px) and (orientation: landscape) { .button-container { margin: 0 20px; } .button { height: 180px; width: 180px; font-size: 24px; margin-bottom: 15px; } }
+        .button:hover { background-color: #2980b9; }
+        .button:active { background-color: #2077a0; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); }
+        .fortnite-button { background-image: url('https://tiermaker.com/images/templates/alle-fortnite-live-events-15819452/158194521685715546.jpg'); background-size: cover; }
+        .edge-button { background-image: url('https://logodownload.org/wp-content/uploads/2017/05/microsoft-edge-logo-00.png'); background-size: cover; }
+    </style>
+</head>
+<body>
+<a href="https://www.localdeck.it" class="header" target="_blank">LocalDeck</a>
+<div class="outer-container">
+    <div class="button-container" style="margin-bottom: 20px;">
+        <button class="button" onclick="buttonClicked(1)">Ctrl+A</button>
+        <button class="button" onclick="buttonClicked(2)">Ctrl+C</button>
+        <button class="button" onclick="buttonClicked(3)">Ctrl+V</button>
+        <button class="button" onclick="buttonClicked(4)">Win+Tab</button>
+        <button class="button edge-button" onclick="buttonClicked(5)">Edge</button>
+    </div>
+    <div class="button-container" style="margin-bottom: 20px;">
+        <button class="button fortnite-button" onclick="buttonClicked(6)">Fortnite</button>
+        <button class="button" onclick="buttonClicked(7)">Desktop</button>
+        <button class="button" onclick="buttonClicked(8)">Close</button>
+        <button class="button" onclick="buttonClicked(9)">Pulsante 9</button>
+        <button class="button" onclick="buttonClicked(10)">Pulsante 10</button>
+    </div>
+</div>
+<script>
+    function buttonClicked(buttonNumber) {
+        fetch('/button_clicked', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({'buttonNumber': buttonNumber}) });
+    }
+</script>
+</body>
+</html>
