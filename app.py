@@ -11,36 +11,48 @@ def index():
 @app.route('/button_clicked', methods=['POST'])
 def button_clicked():
     data = request.get_json()
-    button_number = data['buttonNumber']
+    button_number = data.get('buttonNumber')
+
+    if not button_number or button_number < 1 or button_number > 10:
+        return '', 400  # Bad Request
+
     if button_number == 1:
-        print("1")
-        pyautogui.hotkey('ctrl', 'a')
+        perform_control_a()
     elif button_number == 2:
-        print("2")
-        pyautogui.hotkey('ctrl', 'c')
+        perform_control_c()
     elif button_number == 3:
-        print("3")
-        pyautogui.hotkey('ctrl', 'v')
+        perform_control_v()
     elif button_number == 4:
-        print("4")
-        pyautogui.hotkey('win', 'tab')
+        perform_win_tab()
     elif button_number == 5:
-        print("5")
-        subprocess.Popen([r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"])
+        open_edge_browser()
     elif button_number == 6:
-        print("6")
-        subprocess.Popen([r"D:\Epic Games\Fortnite\FortniteGame\Binaries\Win64\FortniteClient-Win64-Shipping_EAC_EOS.exe"])
+        open_fortnite()
     elif button_number == 7:
-        print("7")
-        pyautogui.hotkey('win', 'd')
+        perform_win_d()
     elif button_number == 8:
-        print("8")
-        pyautogui.hotkey('alt', 'F4')
-    elif button_number == 9:
-        print("9")
-    elif button_number == 10:
-        print("10")
+        perform_alt_f4()
+    elif button_number == 9 or button_number == 10:
+        pass  # No action for buttons 9 and 10
+
     return '', 204
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+def perform_control_a():
+    try:
+        pyautogui.hotkey('ctrl', 'a')
+    except Exception as e:
+        print(f"Error performing control-a: {e}")
+
+def perform_control_c():
+    try:
+        pyautogui.hotkey('ctrl', 'c')
+    except Exception as e:
+        print(f"Error performing control-c: {e}")
+
+def perform_control_v():
+    try:
+        pyautogui.hotkey('ctrl', 'v')
+    except Exception as e:
+        print(f"Error performing control-v: {e}")
+
+def perform_win
