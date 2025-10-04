@@ -1,7 +1,7 @@
 # [LocalDeck](https://github.com/EmaBixD/LocalDeck)
 Digital and free alternative to the Stream Deck. Working with any device and browser connected to the same network as the host computer.
 
-> Biasi Emanuele - All rights reserved - last edit on 18/12/2023
+> - last edit on 18/12/2023
 
 # Usage
 
